@@ -17,21 +17,22 @@ function Startup() {
 }
 
 function Content() {
-  const textures = useLoader(TextureLoader, state.paragraphs.map(({ image }) => image))
+  const textures = useLoader(
+    TextureLoader,
+    state.paragraphs.map(({ image }) => image)
+  )
   const images = textures.map(texture => ((texture.minFilter = LinearFilter), texture))
   const { width, zoom, viewport, margin, mobile } = useParallax()
   return (
     <>
       <Parallax factor={1} offset={0}>
-        <Parallax factor={1} offset={-0.25}>
-          <Text left size={width * 0.08} position={[-viewport.width / zoom / 5, (-viewport.height + viewport.height*0.35) / zoom / 5, -1]} color="#d40749">
-          {"MOKSHA"}
+        <Parallax factor={1.5} offset={0}>
+          <Text left size={width * 0.08} position={[-width / 3.2, 0, -1]} color="#d40749">
+            MOKSHA
           </Text>
         </Parallax>
-        <Parallax factor={0.8} offset={-0.22}>
-          <Dom position={[-viewport.width / zoom / 5, -viewport.height / zoom / 5, -1]}>
-          It was the year 2076. The substance had arrived.
-          </Dom>
+        <Parallax factor={0.8} offset={0}>
+          <Dom position={[-width / 3.2, -width * 0.08 - 0.25, -1]}>It was the year 2076.{mobile ? <br /> : " "}The substance had arrived.</Dom>
         </Parallax>
       </Parallax>
       <Parallax factor={1.2} offset={5.7}>
@@ -92,16 +93,22 @@ function App() {
         </Suspense>
       </Canvas>
       <div className="scrollArea" ref={scrollArea} onScroll={e => (state.scrollTop.current = e.target.scrollTop)}>
-        {new Array(state.pages).fill().map((_, index) => (
-          <div key={index} id={"0" + index} style={{ height: "100vh" }} />
+        {new Array(state.sections).fill().map((_, index) => (
+          <div key={index} id={"0" + index} style={{ height: `${(state.pages / state.sections) * 100}vh` }} />
         ))}
       </div>
       <div className="frame">
         <h1 className="frame__title">Scroll, Refraction and Shader Effects</h1>
         <div className="frame__links">
-          <a className="frame__link" href="http://tympanus.net/Tutorials/PhysicsMenu/">Previous demo</a>
-          <a className="frame__link" href="https://tympanus.net/codrops/?p=45441">Article</a>
-          <a className="frame__link" href="https://github.com/drcmda/the-substance">GitHub</a>
+          <a className="frame__link" href="http://tympanus.net/Tutorials/PhysicsMenu/">
+            Previous demo
+          </a>
+          <a className="frame__link" href="https://tympanus.net/codrops/?p=45441">
+            Article
+          </a>
+          <a className="frame__link" href="https://github.com/drcmda/the-substance">
+            GitHub
+          </a>
         </div>
         <div className="frame__nav">
           <a className="frame__link" href="#00" children="intro" />
