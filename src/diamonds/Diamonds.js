@@ -36,7 +36,8 @@ export default function Diamonds() {
       const { x, offset, scale, factor } = data
       data.pos.set(x, lerp(data.pos.y, -height * offset * factor + (scrollTop.current / 100) * factor, 0.1), 0)
       dummy.position.copy(data.pos)
-      if (i === 0 || i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
+      //if (i === 0 || i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
+      if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
       else dummy.rotation.set(t, t, t)
       dummy.scale.set(scale / 3, scale / 3, scale / 3)
       dummy.updateMatrix()

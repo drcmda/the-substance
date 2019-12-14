@@ -53,14 +53,11 @@ const state = {
     { offset: 7, factor: 1.05, header: "The Factory", image: "/photo-1548191265-cc70d3d45ba1.jpeg", aspect: 1.77, text: "Education and enlightenment." }
   ],
   stripes: [
-    { offset: 0, color: "#171727", height: 20 },
-    //{ offset: 0.05, color: "black", height: 4 },
-    { offset: 5.9, color: "#49e3aa", height: 10 },
-    { offset: 8, color: "#171727", height: 20 }
-    //{ offset: 8, color: "#e7005a", height: 2 }
+    { offset: 0, color: "#000", height: 13 },
+    { offset: 6.3, color: "#000", height: 20 }
   ],
   diamonds: [
-    { x: 0, offset: -0.05, pos: new Vector3(), scale: 10, factor: 2.5 },
+    { x: 0, offset: 0.05, pos: new Vector3(), scale: 0.8, factor: 5.8 },
     { x: 2, offset: 1.2, pos: new Vector3(), scale: 1, factor: 3.5 },
     { x: -5, offset: 2, pos: new Vector3(), scale: 1, factor: 2.5 },
     { x: -3, offset: 3.2, pos: new Vector3(), scale: 1, factor: 1.75 },

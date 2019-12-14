@@ -23,44 +23,41 @@ function Content() {
   return (
     <>
       <Parallax factor={1} offset={0}>
-        <Parallax factor={2.5} offset={0}>
-          <Text opacity={0.15} center position={[3, 3, 0]} size={width * 0.5} children="00" />
-        </Parallax>
         <Parallax factor={1} offset={-0.25}>
-          <MultilineText left size={width * 0.15} lineHeight={width / 6} position={[-width / 5.5, 0, -1]} color="#e7005a" text={"Free\nyour\nmind"} />
+          <Text left size={width * 0.08} position={[-viewport.width / zoom / 5, (-viewport.height + viewport.height*0.35) / zoom / 5, -1]} color="#d40749">
+          {"MOKSHA"}
+          </Text>
         </Parallax>
-        <Parallax factor={1.25} offset={0}>
-          <Dom className="bottom-left" position={[-viewport.width / zoom / 2, -viewport.height / zoom / 2, 0]}>
-            It was the year 2076. <br />
-            The substance had arrived.
+        <Parallax factor={0.8} offset={-0.22}>
+          <Dom position={[-viewport.width / zoom / 5, -viewport.height / zoom / 5, -1]}>
+          It was the year 2076. The substance had arrived.
           </Dom>
         </Parallax>
       </Parallax>
       <Parallax factor={1.2} offset={5.7}>
-        <MultilineText top left size={width * 0.2} lineHeight={width / 6} position={[-width / 3.5, 0, -1]} color="white" text={"four\nzero\nzero"} />
+        <MultilineText top left size={width * 0.15} lineHeight={width / 5} position={[-width / 3.5, 0, -1]} color="#2fe8c3" text={"four\nzero\nzero"} />
       </Parallax>
       {state.paragraphs.map(({ offset, factor, header, aspect, text }, index) => {
         const size = aspect < 1 && !mobile ? 0.65 : 1
         const alignRight = (viewport.width / zoom - width * size - margin) / 2
         const pixelWidth = width * zoom * size
         const left = !(index % 2)
-        const color = index % 2 ? "#e7005a" : "#49e3aa"
+        const color = index % 2 ? "#D40749" : "#2FE8C3"
         return (
           <Parallax key={index} factor={factor} offset={offset}>
             <group position={[left ? -alignRight : alignRight, 0, 0]}>
               <Plane map={images[index]} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[width * size, (width * size) / aspect, 1]} frustumCulled={false} />
               <Dom
                 prepend
-                className="text"
                 style={{ width: pixelWidth / (mobile ? 1 : 2), textAlign: left ? "left" : "right" }}
                 position={[left || mobile ? (-width * size) / 2 : 0, (-width * size) / 2 / aspect - 0.4, 1]}>
                 {text}
               </Dom>
-              <Text left={left} right={!left} size={width * 0.1} color={color} top position={[((left ? -width : width) * size) / 2, (width * size) / aspect / 2 + 0.5, -1]}>
+              <Text left={left} right={!left} size={width * 0.04} color={color} top position={[((left ? -width : width) * size) / 2, (width * size) / aspect / 2 + 0.5, -1]}>
                 {header}
               </Text>
               <Parallax factor={0.2} offset={offset}>
-                <Text opacity={0.15} size={width * 0.5} color="white" position={[((left ? width : -width) / 2) * size, (width * size) / aspect / 1.5, -10]}>
+                <Text opacity={0.5} size={width * 0.1} color="#1A1E2A" position={[((left ? width : -width) / 2) * size, (width * size) / aspect / 1.5, -10]}>
                   {"0" + (index + 1)}
                 </Text>
               </Parallax>
@@ -74,7 +71,7 @@ function Content() {
         </Parallax>
       ))}
       <Parallax factor={1.25} offset={8}>
-        <Dom className="bottom-right" position={[viewport.width / zoom / 2, -viewport.height / zoom / 2, 0]}>
+        <Dom className="bottom-left" position={[-viewport.width / zoom / 2, -viewport.height / zoom / 2, 0]}>
           Culture is not your friend.
         </Dom>
       </Parallax>
@@ -99,12 +96,22 @@ function App() {
           <div key={index} id={"0" + index} style={{ height: "100vh" }} />
         ))}
       </div>
-      <div className="left">Multiside Refraction with Parallax Scrolling</div>
-      <div className="right">
-        <a href="#00" children="00" />
-        <a href="#01" children="01" />
-        <a href="#02" children="02" />
-        <a href="#03" children="04" />
+      <div className="frame">
+        <h1 className="frame__title">Scroll, Refraction and Shader Effects</h1>
+        <div className="frame__links">
+          <a className="frame__link" href="http://tympanus.net/Tutorials/PhysicsMenu/">Previous demo</a>
+          <a className="frame__link" href="https://tympanus.net/codrops/?p=45441">Article</a>
+          <a className="frame__link" href="https://github.com/drcmda/the-substance">GitHub</a>
+        </div>
+        <div className="frame__nav">
+          <a className="frame__link" href="#00" children="intro" />
+          <a className="frame__link" href="#01" children="01" />
+          <a className="frame__link" href="#02" children="02" />
+          <a className="frame__link" href="#03" children="03" />
+          <a className="frame__link" href="#04" children="04" />
+          <a className="frame__link" href="#05" children="05" />
+          <a className="frame__link" href="#07" children="06" />
+        </div>
       </div>
     </>
   )

@@ -1,15 +1,33 @@
-@import url("https://fonts.googleapis.com/css?family=News+Cycle&display=swap");
+@import url('https://fonts.googleapis.com/css?family=Sulphur+Point&display=swap');
+
+*,
+*::after,
+*::before {
+	box-sizing: border-box;
+}
+
 :root {
   font-size: 20px;
 }
 
-html,
 body {
   margin: 0;
   padding: 0;
-  background: #070714;
+  background: #0c0f13;
   overflow: hidden;
-  font-family: "News Cycle", sans-serif;
+  font-family: 'Sulphur Point', sans-serif;
+  color: #8b8b8b;
+  font-size: 0.9rem;
+}
+
+a {
+  color: #545454;
+  text-decoration: none;
+}
+
+a:focus, 
+a:hover {
+  color: #8b8b8b;
 }
 
 #root {
@@ -25,11 +43,7 @@ canvas {
 .loading {
   padding: 10px;
   transform: translate3d(-50%, -50%, 0);
-  color: white;
-}
-
-.text {
-  color: #606063;
+  color: #8b8b8b;
 }
 
 .scrollArea {
@@ -41,44 +55,69 @@ canvas {
   overflow: auto;
 }
 
-.left,
-.right {
+.frame {
   position: absolute;
-  top: 2em;
-  color: #bfcfcf;
+  width: 100%;
+  top: 0;
+  left: 0;
+  padding: 1.5rem;
 }
 
-.left {
-  left: 2em;
-  max-width: 250px;
+.frame__title {
+  font-size: inherit;
+  font-weight: normal;
+  margin: 0;
 }
 
-.right {
-  right: 2em;
-  text-align: right;
+.frame__links {
+  margin: 1rem 0;
 }
 
-.quote {
-  font-size: 80px;
-  text-transform: uppercase;
-  color: #606063;
-  padding: 2em;
+.frame__link:not(:last-child) {
+  margin-right: 1rem;
+}
+
+.frame__nav .frame__link:first-child {
+  margin-right: 1.5rem;
 }
 
 .bottom-left {
-  color: #bfcfcf;
-  padding: 2em;
+  padding: 1.5rem;
   transform: translate3d(0, -100%, 0) !important;
 }
 
-.bottom-right {
-  text-align: right;
-  color: #bfcfcf;
-  padding: 2em;
-  transform: translate3d(-100%, -100%, 0) !important;
-}
-
-a {
-  color: #bfcfcf;
-  padding: 4px;
+@media screen and (min-width: 53em) {
+	body {
+		overflow: hidden;
+	}
+	.frame {
+    display: grid;
+    height: 100vh;
+    padding: 2rem 3.7rem;
+    pointer-events: none;
+		align-content: space-between;
+		grid-template-columns: 50% 50%;
+		grid-template-rows: auto auto auto;
+		grid-template-areas: 'title links'
+							'... ...'
+							'... nav';
+	}
+	.frame__title {
+    grid-area: title;
+	}
+	.frame__links {
+		grid-area: links;
+    justify-self: end;
+    margin: 0;
+  }
+  .frame__link {
+    pointer-events: auto;
+  }
+  .frame__nav {
+    grid-area: nav;
+		justify-self: end;
+  }
+  .bottom-left {
+    padding: 0 0 2rem 3.7rem;
+  }
 }
