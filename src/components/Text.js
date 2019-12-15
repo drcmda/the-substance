@@ -3,7 +3,7 @@ import React, { useCallback, useRef } from "react"
 import { useLoader, useFrame } from "react-three-fiber"
 import usePromise from "react-promise-suspense"
 import lerp from "lerp"
-import { useParallax } from "./Parallax"
+import state from "../store"
 
 function Text({ children, size = 1, left, right, top, bottom, color = "white", opacity = 1, height = 0.01, layers = 0, font = "/MOONGET_Heavy.blob", ...props }) {
   const data = useLoader(FontLoader, font)
@@ -19,18 +19,17 @@ function Text({ children, size = 1, left, right, top, bottom, color = "white", o
     [left, right, top, bottom]
   )
 
-  const { scrollTop } = useParallax()
   const ref = useRef()
-  let last = scrollTop.current
+  let last = state.top.current
   useFrame(() => {
-    ref.current.shift = lerp(ref.current.shift, (scrollTop.current - last) / 200, 0.1)
-    last = scrollTop.current
+    ref.current.shift = lerp(ref.current.shift, (state.top.current - last) / 200, 0.1)
+    last = state.top.current
   })
 
   return (
     <group {...props} scale={[size, size, 0.1]}>
       <mesh geometry={geom} onUpdate={onUpdate} frustumCulled={false}>
-        <meshUVZoomMaterial ref={ref} attach="material" color={color} transparent opacity={opacity} />
+        <customMaterial ref={ref} attach="material" color={color} transparent opacity={opacity} />
       </mesh>
     </group>
   )

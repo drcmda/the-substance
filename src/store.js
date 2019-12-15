@@ -3,7 +3,7 @@ import { Vector3 } from "three"
 
 const state = {
   sections: 9,
-  pages: 10,
+  pages: 8.5,
   zoom: 75,
   paragraphs: [
     {
@@ -66,7 +66,7 @@ const state = {
     { x: -5, offset: 7, pos: new Vector3(), scale: 0.8, factor: 2 },
     { x: 0, offset: 8, pos: new Vector3(), scale: 1.5, factor: 6 }
   ],
-  scrollTop: createRef()
+  top: createRef()
 }
 
 export default state

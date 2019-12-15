@@ -3,10 +3,10 @@ import React, { useRef, useMemo } from "react"
 import { useLoader, useThree, useFrame } from "react-three-fiber"
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader"
 import lerp from "lerp"
-import { useParallax } from "./../components/Parallax"
 import BackfaceMaterial from "./BackfaceMaterial"
 import RefractionMaterial from "./RefractionMaterial"
-import state from "./../store"
+import { useBlock } from "../blocks"
+import state from "../store"
 
 const dummy = new Object3D()
 export default function Diamonds() {
@@ -14,7 +14,7 @@ export default function Diamonds() {
   useMemo(() => gltf.scene.children[0].geometry.center(), [])
 
   const { size, gl, scene, camera, clock } = useThree()
-  const { scrollTop, height, width, mobile } = useParallax()
+  const { contentMaxWidth, sectionHeight, mobile } = useBlock()
   const model = useRef()
   const ratio = gl.getPixelRatio()
 
@@ -34,13 +34,12 @@ export default function Diamonds() {
     state.diamonds.forEach((data, i) => {
       const t = clock.getElapsedTime() / 2
       const { x, offset, scale, factor } = data
-      const s = width / 35 * scale
-      data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -height * offset * factor + (scrollTop.current / 100) * factor, 0.1), 0)
+      const s = (contentMaxWidth / 35) * scale
+      data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -sectionHeight * offset * factor + (state.top.current / state.zoom) * factor, 0.1), 0)
       dummy.position.copy(data.pos)
-      //if (i === 0 || i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
       if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
       else dummy.rotation.set(t, t, t)
-      dummy.scale.set(s,s,s)
+      dummy.scale.set(s, s, s)
       dummy.updateMatrix()
       model.current.setMatrixAt(i, dummy.matrix)
       model.current.instanceMatrix.needsUpdate = true

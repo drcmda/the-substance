@@ -1,7 +1,7 @@
 import { ShaderMaterial, Color } from "three"
 import { extend } from "react-three-fiber"
 
-class MeshUVZoomMaterial extends ShaderMaterial {
+class CustomMaterial extends ShaderMaterial {
   constructor() {
     super({
       vertexShader: `uniform float scale;
@@ -79,4 +79,4 @@ class MeshUVZoomMaterial extends ShaderMaterial {
   }
 }
 
-extend({ MeshUVZoomMaterial })
+extend({ CustomMaterial })

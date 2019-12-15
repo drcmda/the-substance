@@ -10,6 +10,11 @@
   font-size: 20px;
 }
 
+::selection {
+  background: #2ddab8;
+  color: white;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -36,8 +41,8 @@ a:hover {
   overflow: hidden;
 }
 
-canvas {
-  position: absolute;
+.canvas > div {
+  z-index: 1;
 }
 
 .loading {
