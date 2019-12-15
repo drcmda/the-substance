@@ -66,6 +66,7 @@ a:hover {
   top: 0;
   left: 0;
   padding: 1.5rem;
+  z-index: 2;
 }
 
 .frame__title {
