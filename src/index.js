@@ -27,12 +27,12 @@ function Content() {
     <>
       <Parallax factor={1} offset={0}>
         <Parallax factor={1.2} offset={0}>
-          <Text left size={width * 0.08} position={[-width / 3.2, 0, -1]} color="#d40749">
+          <Text left size={width * 0.08} position={[-width / 3.2, 0.5, -1]} color="#d40749">
             MOKSHA
           </Text>
         </Parallax>
         <Parallax factor={1.0} offset={0}>
-          <Dom position={[-width / 3.2, -width * 0.08 - 0.25, -1]}>It was the year 2076.{mobile ? <br /> : " "}The substance had arrived.</Dom>
+          <Dom position={[-width / 3.2, -width * 0.08 + 0.25, -1]}>It was the year 2076.{mobile ? <br /> : " "}The substance had arrived.</Dom>
         </Parallax>
       </Parallax>
       <Parallax factor={1.2} offset={5.7}>

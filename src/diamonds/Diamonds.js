@@ -14,7 +14,7 @@ export default function Diamonds() {
   useMemo(() => gltf.scene.children[0].geometry.center(), [])
 
   const { size, gl, scene, camera, clock } = useThree()
-  const { scrollTop, height, width } = useParallax()
+  const { scrollTop, height, width, mobile } = useParallax()
   const model = useRef()
   const ratio = gl.getPixelRatio()
 
@@ -35,7 +35,7 @@ export default function Diamonds() {
       const t = clock.getElapsedTime() / 2
       const { x, offset, scale, factor } = data
       const s = width / 35 * scale
-      data.pos.set(x, lerp(data.pos.y, -height * offset * factor + (scrollTop.current / 100) * factor, 0.1), 0)
+      data.pos.set(mobile ? 0 : x, lerp(data.pos.y, -height * offset * factor + (scrollTop.current / 100) * factor, 0.1), 0)
       dummy.position.copy(data.pos)
       //if (i === 0 || i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)
       if (i === state.diamonds.length - 1) dummy.rotation.set(0, t, 0)

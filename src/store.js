@@ -17,7 +17,7 @@ const state = {
     {
       offset: 2,
       factor: 2.0,
-      header: "Catalina",
+      header: "Diamond Road",
       image: "/photo-1519608487953-e999c86e7455.jpeg",
       aspect: 1.5,
       text:
@@ -26,18 +26,18 @@ const state = {
     {
       offset: 3,
       factor: 2.25,
-      header: "Building 21",
-      image: "/building.jpeg",
-      aspect: 0.66,
+      header: "Catalina",
+      image: "/ph1.jpg",
+      aspect: 1.5037,
       text:
         "The substance can take you to heaven but it can also take you to hell. Or else to both, together or alternately. Or else (if you're lucky, or if you've made yourself ready) beyond either of them. And then beyond the beyond, back to where you started from — back to here, back to New Rotham sted, back to business as usual. Only now, of course, business as usual is completely different."
     },
     {
       offset: 4,
       factor: 2.0,
-      header: "Diamond Road",
-      image: "/photo-1516245266743-983948b98d53.jpeg",
-      aspect: 0.66,
+      header: "Building 21",
+      image: "/ph3.jpg",
+      aspect: 0.665,
       text:
         "We’ve found that the people whose EEG doesn’t show any alpha-wave activity when they’re relaxed aren’t likely to respond significantly to the substance. That means that, for about fifteen percent of the population, we have to find other approaches to liberation."
     },
@@ -57,7 +57,7 @@ const state = {
     { offset: 6.3, color: "#000", height: 20 }
   ],
   diamonds: [
-    { x: 0, offset: 0.18, pos: new Vector3(), scale: 0.6, factor: 1.8 },
+    { x: 0, offset: 0.15, pos: new Vector3(), scale: 0.6, factor: 1.8 },
     { x: 2, offset: 1.2, pos: new Vector3(), scale: 0.8, factor: 3.5 },
     { x: -5, offset: 2, pos: new Vector3(), scale: 0.8, factor: 2.5 },
     { x: -3, offset: 3.2, pos: new Vector3(), scale: 0.8, factor: 1.75 },
