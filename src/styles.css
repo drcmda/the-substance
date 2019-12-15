@@ -41,10 +41,6 @@ a:hover {
   overflow: hidden;
 }
 
-.canvas > div {
-  z-index: 1;
-}
-
 .loading {
   padding: 10px;
   transform: translate3d(-50%, -50%, 0);
