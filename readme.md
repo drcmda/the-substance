@@ -10,8 +10,7 @@ Discover how to use react-three-fiber and combine some common techniques to crea
 
 ## Installation
 
-	yarn install
-	yarn build
+	yarn
 	yarn start
 
 
