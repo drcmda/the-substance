@@ -88,6 +88,10 @@ a:hover {
   transform: translate3d(0, -100%, 0) !important;
 }
 
+.canvas > div {
+  z-index: 10000000;
+}
+
 @media screen and (min-width: 53em) {
 	body {
 		overflow: hidden;

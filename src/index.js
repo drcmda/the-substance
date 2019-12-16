@@ -26,11 +26,11 @@ function Paragraph({ image, index, offset, factor, header, aspect, text }) {
   return (
     <Block factor={factor} offset={offset}>
       <group position={[left ? -alignRight : alignRight, 0, 0]}>
-        <Plane map={image} args={[1, 1, 32, 32]} shift={200} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
+        <Plane map={image} args={[1, 1, 32, 32]} shift={75} size={size} aspect={aspect} scale={[w * size, (w * size) / aspect, 1]} frustumCulled={false} />
         <Dom
           style={{ width: pixelWidth / (mobile ? 1 : 2), textAlign: left ? "left" : "right" }}
           position={[left || mobile ? (-w * size) / 2 : 0, (-w * size) / 2 / aspect - 0.4, 1]}>
-          {text}
+          <div tabIndex={index}>{text}</div>
         </Dom>
         <Text left={left} right={!left} size={w * 0.04} color={color} top position={[((left ? -w : w) * size) / 2, (w * size) / aspect / 2 + 0.5, -1]}>
           {header}
@@ -90,7 +90,7 @@ function App() {
   useEffect(() => void onScroll({ target: scrollArea.current }), [])
   return (
     <>
-      <Canvas concurrent pixelRatio={1} orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
+      <Canvas className="canvas" concurrent pixelRatio={1} orthographic camera={{ zoom: state.zoom, position: [0, 0, 500] }}>
         <Suspense fallback={<Dom center className="loading" children="Loading..." />}>
           <Content />
           <Diamonds />

@@ -3,7 +3,7 @@ import { Vector3 } from "three"
 
 const state = {
   sections: 9,
-  pages: 8.5,
+  pages: 8,
   zoom: 75,
   paragraphs: [
     {
